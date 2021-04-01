@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>로또 추첨</title>
+<style>
+	.resultNum {
+		display: inline-block;
+		border: 1px solid black;
+		border-bottom-left-radius: 10px;
+		border-bottom-right-radius:10px;
+		border-top-left-radius:10px;
+		border-top-right-radius:10px;
+		width: 20px;
+		height: 20px;
+		text-align: center;
+	}
+	.inputNum {
+		width: 40px;
+	}
+</style>
+</head>
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="로또추첨.js"></script>
+
+<div>
+	<input type="number" name="inputNum" class="inputNum">
+	<input type="number" name="inputNum" class="inputNum">
+	<input type="number" name="inputNum" class="inputNum">
+	<input type="number" name="inputNum" class="inputNum">
+	<input type="number" name="inputNum" class="inputNum">
+	<input type="number" name="inputNum" class="inputNum">
+</div>
+<button id="button1">번호 추첨</button>
+<div class="resultText" style="display: none;">당첨번호</div>
+<div id="result"></div>
+<div class="resultText" style="display: none;">보너스번호</div>
+<div id="bonus"></div>
+<div class="resultText" id="resultText"></div>
+</body>
+</html>
