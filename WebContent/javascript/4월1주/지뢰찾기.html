@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>지뢰찾기</title>
+<style>
+	td {
+		width: 20px;
+		height: 20px;
+		border: 1px solid black;
+	}
+	td.opened {
+		background-color: gray;
+	}
+</style>
+</head>
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="지뢰찾기.js"></script>
+
+<input type="number" id="row" placeholder="가로">
+<input type="number" id="column" placeholder="세로">
+<input type="number" id="boom" placeholder="지뢰">
+<button id="btn1">지뢰찾기 생성</button>
+<table id="table">
+	<thead></thead>
+	<tbody></tbody>
+</table>
+</body>
+</html>
