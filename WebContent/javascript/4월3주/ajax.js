@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	loadAjax();
+	activeAjax();
 });
 /**
  * AJAX란 비동기 자바스크립트와 XML을 말한다.
@@ -72,17 +72,135 @@ function makeAjax() {
  * DATA - 데이터 전송
  * CALLBACK - 통신 이후 작업을 수행
  */
-function loadAjax() {
+function activeAjax() {
 	$('#load').on('click', function() {
 		$('#area').load('load.html');
 		return false;
+	});
+	
+	$('#get').on('click', function() {
+		jqueryAjax();
+	});
+	
+	$('#json').on('click', function() {
+		getJSONAjax();
+	});
+	
+	$('#script').on('click', function() {
+		getScriptAjax();
 	});
 }
 
 /**
  * 2. ajax함수
  * $.ajax(options);
+ * option종류
+ * url - 요청이 전송되는 URL이 포함된 문자열
+ * type - Http요청방식(GET/POST)
+ * timeout - Http요청에 대한 제한시간
+ * success - Http요청 성공시 이벤트 핸들러
+ * error - Http요청 실패시 이벤트 핸들러
+ * complete - Http요청 완료시 이벤트 핸들러
+ * data - 서버로 보낼 데이터
+ * dataType - Http요청 후 return 데이터 Type지정(xml,html,json,jsonp,script,text)
+ * async - 요청시 동기유무 선택(True/False)
+ * cache - 요청되는 페이지를 캐시할 수 있다.(True/False)
+ * beforeSend - Http요청 전 발생하는 이벤트 핸들러
+ * global - 전역함수 활성여부 설정(True/False)
  */
+
+//기본적인 ajax호출
+function jqueryAjaxFormat() {
+	let data = {name: "홍길동",
+				age: 20,
+				gender: "남"};
+	$.ajax({
+		type: 'GET', //type을 설정
+		url: "", //서버로 보낼 주소 입력
+		data: data, //서버로 보낼 데이터 
+		success: function(data) { //성공적으로 실행됐을때 실행할 코드
+			if (data) {
+				alert("호출 성공입니다.");
+			}
+		}
+	});
+}
+
+function jqueryAjax() {
+	$.ajax({
+		type: 'GET',
+		url: "jqueryAjax.xml",
+		dataType: 'xml',
+		success: function(data) {
+			if (data) {
+				$('#area').empty().append('<h3>jquery Ajax 연습</h3>');
+				
+				$.each($(data).find('food'), function() {
+					let food = $(this);
+					let tag = '';
+					tag += '<div>';
+					tag += 		'<h3>' + food.attr('name') + '</h3>';
+					tag += 		'<div>' + food.text() + '</div>';
+					tag += 	'</div>';
+					
+					$(tag).appendTo('#area');
+				});
+			}
+		}
+		
+	})
+}
+
+/*
+ * 3.getJSON함수
+ * $.getJSON( URL, DATA, CALLBACK );
+ * JSON형식의 데이터를 불러 읽을 때 사용
+ * GET방식으로 통신
+ */
+
+function getJSONAjax() {
+	$.getJSON("getJSON.json", function(data) {
+		if (data) {
+			$('#area').empty().append('<h3>getJSON Ajax 연습</h3>');
+			
+			$.each(data, function(i, e) {
+				let tag = '';
+				tag += '<div>';
+				tag += 		'<h3>' + e.name + '</h3>';
+				tag += 		'<div>' + e.sentence+ '</div>';
+				tag += 	'</div>';
+				
+				$(tag).appendTo('#area');
+			});
+		}
+		
+	})
+}
+
+
+/*
+ * 3.getScript함수
+ * $.getScript( URL );
+ * script파일을 불러 읽을 때 사용
+ * GET방식으로 통신
+ */
+
+function getScriptAjax() {
+	$.getScript('getScript.js');
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

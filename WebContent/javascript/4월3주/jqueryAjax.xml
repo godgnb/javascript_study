@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<foods>
+	<food name="사과">
+		<text>
+			사과는 빨간색이다.
+		</text>
+	</food>
+	<food name="바나나">
+		<text>
+			바나나는 노란색이다.
+		</text>
+	</food>
+	<food name="오렌지">
+		<text>
+			오렌지는 주황색이다.
+		</text>
+	</food>
+</foods>
